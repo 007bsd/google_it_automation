@@ -3,6 +3,8 @@
 import os
 import sys
 import shutil
+import socket
+import psutil
 
 def reboot_exit():
     """Returns True if reboot file exit- reset"""
@@ -24,20 +26,32 @@ def check_root_full():
     """Returns True if roo partition is full, False otherwise"""
     return check_disk_full(disk="/", min_gb=2, min_percant=10)
 
+def check_network():
+    """Retruns True if the network is available"""
+    try:
+        socket.gethostname("www.google.com")
+        return True
+    except:
+        return False
+
+def check_cpu_constrain():
+    return psutil.cpu_percent(1) > 75
 def main():
     checks = [
         (reboot_exit, "disk is full"),
-        (check_root_full, "root partition full")
+        (check_root_full, "root partition full"),
+        (check_network, "there is no network"),
+        (check_cpu_constrain, "cpu is so huge"),
     ]
     everything_OK = True
     for check, msg in checks:
         if check():
             print(msg)
             everything_OK = False
-            
+
         if not everything_OK:
             sys.exit(1)
-    print("Everything] OK!")
+    print("Everything OK!")
     sys.exit(0)
 
 
