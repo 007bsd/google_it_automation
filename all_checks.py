@@ -29,9 +29,13 @@ def main():
         (reboot_exit, "disk is full"),
         (check_root_full, "root partition full")
     ]
+    everything_OK = True
     for check, msg in checks:
         if check():
             print(msg)
+            everything_OK = False
+            
+        if not everything_OK:
             sys.exit(1)
     print("Everything] OK!")
     sys.exit(0)
