@@ -27,7 +27,7 @@ def main():
         print("reboot is pending?")
         sys.exit(1)
     if check_disk_full(disk="/", min_gb=2, min_percant=10):
-        print("disk full")
+        print("disk full for your infomration")
         sys.exit(1)
     print("Everything] OK!")
     sys.exit(0)
