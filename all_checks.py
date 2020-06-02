@@ -20,14 +20,16 @@ def check_disk_full(disk, min_gb, min_percant):
         return True
     return False
 
-
+def check_root_full():
+    """Returns True if roo partition is full, False otherwise"""
+    return check_disk_full(disk="/", min_gb=2, min_percant=10)
 
 def main():
     if reboot_exit():
         print("reboot is pending?")
         sys.exit(1)
-    if check_disk_full(disk="/", min_gb=2, min_percant=10):
-        print("disk full for your infomration")
+    if check_root_full():
+        print("root full for your infomration")
         sys.exit(1)
     print("Everything] OK!")
     sys.exit(0)
