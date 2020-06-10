@@ -1,0 +1,5 @@
+Bob, 123, admin
+Polly, 234, user
+Sam, 3456, user
+Danielle, 897, contractor
+Jacob, 7890, admin
