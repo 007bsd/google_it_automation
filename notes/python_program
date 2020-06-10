@@ -1,0 +1,325 @@
+1)
+
+2) course 2:
+
+>> shebang command to be used to make a py file executable
+
+#!/usr/bin/env python
+
+Pareto principle
+One fifth of the sysadmin tasks you perform comprise four fifths of your total workload.
+Correct 
+
+Awesome! The Pareto Principle states that 20% of the system administration tasks you perform are responsible for 80% of your workload. Therefore, identifying and automating those tasks will put your productivity through the roof!
+
+Bit Rot:
+
+Disk usage function:
+
+#!/usr/bin/env python
+
+import psutil
+import shutil
+
+def check_disk_usage(disk):
+    du = shutil.disk_usage(disk)
+    free_space = du.free/du.total*100
+    #print(free_space)
+    return free_space > 20
+
+def check_cpu_usage():
+    free_cpu = psutil.cpu_percant(1)
+    #print(free_cpu)
+    return free_cpu < 75
+
+if not check_disk_usage("/") and check_free_usage:
+    print("ERROR!")
+else:
+    print("Everything is OK!")
+
+
+#!/usr/bin/env python3
+
+import requests
+import socket
+
+def check_localhost():
+    localhost = socket.gethostbyname('localhost')
+    if localhost == '127.0.0.1':
+       return True
+
+def check_connectivity():
+    request = requests.get("http://www.google.com")
+    if request.status_code == 200:
+       return True
+
+
+The readline() method reads a single line from the current position, the read() method reads from the current position until the end of the file.
+Correct 
+
+Right on! Both methods read from the current position. The readline() method reads one line, while read() reads until the end of the file.
+
+with open("hello_world.txt") as text:
+    for line in text:
+	    print(line.strip())
+		
+os.remove("file_name"): remove the file
+os.rename("old_file.txt", "new_file.txt"): Rename the file
+os.path.exits("file_name.txt") : check if the file the exits or not
+os.getsize(""filename.txt") : size of the file
+os.path.getmtime("filename.txt") : last time the file was modified
+
+
+Regular expression:
+ 
+grep, sed, awk
+dot (.) = matches any character
+ grep i.t C:\Users\being\Documents\PycharmProjects\automate_boring\test.py 
+^ : begining of the line
+ grep ^i C:\Users\being\Documents\PycharmProjects\automate_boring\test.py 
+$ : end of the line
+ grep t$ C:\Users\being\Documents\PycharmProjects\automate_boring\test.py 
+ 
+ When applyin regular expression the search function returns None if it does not match any
+ 
+ Wild card:
+ character classes : []
+ [a-z]: any lowercase letter
+ [A-z]: upper case letter
+ [0-9]: All numbers
+ 
+ ^: Not the match 
+ 
+ | : either or
+ 
+ findall: find all the possibilities
+ 
+Repeated functions:
+
+* : as many chars as possible
+
++ : One of more character
+? : 0 or 1 occurance of charecters before it
+
+\w: matches any alphanumric chars, letters, numbers, underscorees
+
+\d: digits
+
+\s: white space, space, new line and tab
+\b: word boundries: full words
+
+capturing groups:
+
+numeric qualifier
+
+Data process:
+I/O stream: 
+3 I/O : STDIN, STDOUT and STDERR
+
+Envriomental variable:
+/usr/sbin/temp: does not include in the path variable by default
+
+env : to check all the enviroment
+
+export TEST=TESTER >> exporting
+
+So sys module takes the command line arguments
+
+import sys
+sys.argv >>
+
+Exit status:
+
+exit status = 0 when system is success , else fails
+
+the variable is $?
+
+echo $? : To check false or true. 0 is True and 1 if false
+python sys module can be used for all these
+
+Sub Process:
+
+
+ 
+
+bash:
+> redirected to a new file
+
+comandline > filename.txt
+
+>> : Overwrite
+
+< : read input file
+2> : file descriptor for STDERR
+0> : for STDINN
+1> :for STDOUT
+tr :: translate
+uniq -c 
+head : top 10
+
+cat sample.txt | tr ' ' '\n' | sort
+
+Ctl +z
+fg : comntinue 
+ps ax | grep <>
+
+kill 
+
+ps
+free
+uptime
+
+globs: list of files
+
+*: all files
+? : 
+*? :
+if
+else
+fi
+
+if test -n "string"; :: check string is empty or not
+or if [-n "string"];
+alias of test command
+
+basename filename extension: this returns the file name without the extension
+
+While loop:
+
+#!/bin/bash
+
+n=1
+
+while [$n -le 5]; do
+ echo "n value is $n" 
+ ((n+=1))
+done
+
+#!/bin/bash
+n=0
+command=1   //takes the argument from the command line
+
+while ! $command && [$n -le 5]; do
+ slee 5
+ (n+=1)
+ echo "retry #$n"
+done;
+
+For loop:
+
+#!/bin/bash
+
+for fruit in peach, orrange, aaple; do
+	echo "i like $fruit"
+done
+
+#!/bin/bash
+
+for file in *.HTM; do
+	name=$(basename "$file" .HTM)
+	 
+	echo mv "$file" "$name.html"
+done
+
+
+#####
+cut -d ' '
+-f5-
+
+#!/bin/bash
+
+for line in /var/log/*log; do
+	echo "processing file $line"
+	cut -d' ' -f5- $line | sort | uniq -c | sort -nr | head -5
+
+
+#!/usr/bin/env python3
+
+import sys
+
+for line in sys.stdin:
+	words = line.strip().split()
+	print(" ".join([word.capitalize() for word in words]))
+	
+Git Hub:
+
+file difference:
+
+diff filename1 filename2
+
+diff -u filename1 filename2
+
+wdiff
+meld
+kdiff3
+vimdiff
+
+diff -u filename1 filename2 > change_diff.txt
+patch file:
+patch file is nothing but the changes between two file
+
+patch filename < diff.file
+
+
+git config -l
+
+commit message: 50 lins for header
+
+commit mesage details should be 72 chars
+
+
+git log -p : show patch command
+
+git show <sha>
+git log --stat
+
+git add  -p : add all the new file with a log
+
+git diff --staged  : to check staged file
+
+git checkout <filename>
+
+git revert 
+
+git reset HEAD <file name> : same as the git add
+
+git revert HEAD
+
+git merge anotherbranch from the master branch
+
+git log --graph --online
+
+
+git config --global credential.helper cache
+
+git remote -v
+
+git remote show origin
+
+git branch -r
+
+git log origin/master : to check the remote branch details
+
+
+####################debuggging
+
+binary search 
+
+tcpdump
+wireshark
+top
+free
+ps : Network related issues
+
+strace : system call
+ltrace: library call
+
+strace -o <file_name> executable file
+
+kill --stop
+iotop
+iostat
+vmstat
+ionice : reduce the priority
+nice
+renice

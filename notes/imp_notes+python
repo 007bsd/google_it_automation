@@ -1,0 +1,9 @@
+Automate Boring Stuff:
+
+1) There is no return type in method list.append and list.insert
+
+2) string can not be changd. They are immutable not like list
+
+3) List create a reference variable 
+
+4) 
