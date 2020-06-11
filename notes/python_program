@@ -323,3 +323,28 @@ vmstat
 ionice : reduce the priority
 nice
 renice
+
+
+############condfig_management
+
+gcloud compute instances describe linux-instance --zone=us-central1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)'
+
+
+cloud management:
+software as service : Saas
+platform as service : Paas
+Infrastructure as service : Iaas
+
+scale the service horizontally or vertically
+
+vertically: making nodes bigger means, increase the resources in the machine itself
+
+blob storage
+block storage
+persistent storage
+ephemeral storage
+ sudo netstat -nlp
+ps -ax | grep python3
+
+sudo systemctl --type=service | grep jimmy
+
