@@ -80,7 +80,7 @@ def main(argv):
   table_style = [('GRID', (0,0), (-1,-1), 1, colors.black)]
   report_table = Table(data=table_data, style=table_style, hAlign="LEFT")
   report.build([report_title, report_table])
-  reports.generate("tmp/cars.pdf", "Sales summary of last month", summary, report_table)
+  reports.generate("tmp/cars.pdf", "Sales summary of last month", summary, table_data)
 
   # TODO: turn this into a PDF report
   # TODO: send the PDF report as an email attachment
